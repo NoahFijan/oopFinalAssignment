@@ -3,9 +3,9 @@ import message
 class CiphertextMSG(message):
     def __init__(self, text, encryptionType):
         if encryptionType == 'RSA':
-            super().message = rsaEncrypt(text)
+            super().__init__(rsaEncrypt(text))
         if encryptionType == 'cesar':
-            super().message = cesarEncrypt(text)
+            super().__init__(cesarEncrypt(text))
 
     def rsaEncrypt(text):
         #do RSA encryption
