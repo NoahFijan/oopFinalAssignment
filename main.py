@@ -1,3 +1,3 @@
 import Message
 # test
-print()
+print("pee pee poo poo")
