@@ -84,6 +84,15 @@ class CiphertextMSG(Message):
         #do cesar cypher encryption
         pass
 
+    def playfairEcrypt(self, text):
+        #noah playfair
+        pass
+
+    def transpositionEncrypt(self, text):
+        #noah transp
+        pass
+
+
 if __name__ == '__main__':
     ct = CiphertextMSG('m', 'RSA')
     
