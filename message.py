@@ -2,6 +2,11 @@ class Message:
     def __init__(self, text):
         self.message = text
 
-    def somefunction(self):
-        pass
+    @property
+    def message(self):
+        return self._message
+
+    @message.setter
+    def message(self, text):
+        self._message = text
     
