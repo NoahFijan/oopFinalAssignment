@@ -11,12 +11,12 @@ class CiphertextMSG(Message):
 
         if encryptionType == 'playfair':
             super().__init__(self.playfairEcrypt(text))
-    
+
 
     def readPrivKey(self):
         '''
-        Reads private key components from a the private key file generated in the 
-        PlaintextMSG.py file and returns them 
+        Reads private key components from a the private key file generated in the
+        PlaintextMSG.py file and returns them
         '''
         f = open('priv.txt', 'r')
         n = f.readline()
@@ -24,7 +24,7 @@ class CiphertextMSG(Message):
         f.close()
         return int(n), int(d)
 
-    
+
     def rsaDecrypt(self, text):
         '''
         Takes the encrypted message as input and and returns the decrypted message
@@ -32,7 +32,7 @@ class CiphertextMSG(Message):
         n, d = self.readPrivKey() #get private key
 
         dec = [chr((char ** d) % n) for char in text]
-    
+
         return ''.join(dec)
 
     def playfairDecrypt(self, text):
@@ -112,6 +112,18 @@ class CiphertextMSG(Message):
 
         return decryptString
 
+    def transpositionDecrypt(self, text):
+        newString = text.split(" ")
+        decryptStringList = []
+        decryptString = ""
+        for word in newString:
+            for i in range(len(word), 0, -1):
+                decryptStringList.append(word[i - 1])
+            decryptStringList.append(" ")
+
+        for char in decryptStringList:
+            decryptString += char
+        return decryptString
 
 if __name__ == '__main__':
     a = CiphertextMSG([1050, 1283, 807, 807, 2905, 3576, 1683, 2905, 50, 807, 174, 3096], 'RSA')

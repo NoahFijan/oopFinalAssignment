@@ -172,6 +172,19 @@ class PlaintextMSG(Message):
 
         return encryptedString
 
+    def transpositionCipher(self, text):
+        newString = text.split(" ")
+        encryptStringList = []
+        encryptString = ""
+        for word in newString:
+            for i in range(len(word), 0, -1):
+                encryptStringList.append(word[i - 1])
+            encryptStringList.append(" ")
+
+        for char in encryptStringList:
+            encryptString += char
+        return encryptString
+
 
 if __name__ == '__main__':
     ct = PlaintextMSG('Hello World!', 'RSA')
