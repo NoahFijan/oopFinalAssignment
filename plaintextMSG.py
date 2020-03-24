@@ -184,6 +184,21 @@ class PlaintextMSG(Message):
         for char in encryptStringList:
             encryptString += char
         return encryptString
+    
+    
+    def substitutionCipher(text):
+        substitution_mapping = list(range(26))
+        random.shuffle(substitution_mapping)
+        encrypted_msg = ""
+        base_val = ord('a')
+
+        for c in text:
+            if (c >= 'a' and c <= 'z'):
+                encrypted_msg += chr(substitution_mapping[ord(c) - base_val] + base_val)
+            else:
+                encrypted_msg += c
+
+        return encrypted_msg, substitution_mapping
 
 
 if __name__ == '__main__':
