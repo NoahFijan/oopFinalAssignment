@@ -209,7 +209,7 @@ class PlaintextMSG(Message):
         return encryptedString
         # return the string
 
-    def transpositionCipher(self, text):
+    def transpositionEncrypt(self, text):
         newString = text.split(" ")  # split the sentence into a list of words
         encryptStringList = []
         encryptString = ""
@@ -225,7 +225,7 @@ class PlaintextMSG(Message):
         return encryptString
     
     
-    def substitutionCipher(text):
+    def substitutionEncrypt(text):
         substitution_mapping = list(range(26))
         random.shuffle(substitution_mapping)
         encrypted_msg = ""
@@ -240,7 +240,7 @@ class PlaintextMSG(Message):
         return encrypted_msg, substitution_mapping
     
     
-    def caesarCipher(text):
+    def caesarEncrypt(self, text):
         caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         encrypted_msg = ""
         base_val = ord('a')
