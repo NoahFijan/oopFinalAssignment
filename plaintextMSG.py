@@ -13,6 +13,26 @@ class PlaintextMSG(Message):
             ciphertext = self.rsaEncrypt(text)
             super().__init__(ciphertext)
 
+        if encryptionType == 'Playfair':
+            ciphertext = self.playfairEncrypt(text)
+            super().__init__(ciphertext)
+
+        if encryptionType == 'Transposition':
+            ciphertext = self.transpositionEncrypt(text)
+            super().__init__(ciphertext)
+
+        if encryptionType == 'Product':
+            ciphertext = self.productEncrypt(text)
+            super().__init__(ciphertext)
+
+        if encryptionType == 'Caeser':
+            ciphertext = self.caesarEncrypt(text)
+            super().__init__(ciphertext)
+
+        if encryptionType == 'Substitution':
+            ciphertext = self.substitutionEncrypt(text)
+            super().__init__(ciphertext)
+
     def lcm(self, a, b):
         """
         returns the lowest common multiple of 2 numbers
@@ -91,6 +111,9 @@ class PlaintextMSG(Message):
         c = [(ord(char) ** e) % n for char in text]  # for each char in message encrypt it
 
         return c
+
+    def productEncrypt(self, text):
+        pass
 
     def playfairEncrypt(self, text):
         """
@@ -224,14 +247,14 @@ class PlaintextMSG(Message):
         # FOR LOOP cycles through each char in the encrypted string list, appending it to the encrypted string
         return encryptString
 
-    def substitutionEncrypt(text):
+    def substitutionEncrypt(self, text):
         substitution_mapping = list(range(26))
         random.shuffle(substitution_mapping)
         encrypted_msg = ""
         base_val = ord('a')
 
         for c in text:
-            if (c >= 'a' and c <= 'z'):
+            if c >= 'a' and c <= 'z':
                 encrypted_msg += chr(substitution_mapping[ord(c) - base_val] + base_val)
             else:
                 encrypted_msg += c
@@ -244,7 +267,7 @@ class PlaintextMSG(Message):
         base_val = ord('a')
 
         for c in text:
-            if (c >= 'a' and c <= 'z'):
+            if c >= 'a' and c <= 'z':
                 encrypted_msg += chr(caesar_mapping[ord(c) - base_val] + base_val)
             else:
                 encrypted_msg += c

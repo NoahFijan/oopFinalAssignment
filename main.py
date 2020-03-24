@@ -4,7 +4,7 @@ from plaintextMSG import PlaintextMSG
 import random
 
 if __name__ == '__main__':
-    encryptionTypes = ['RSA', 'Playfair', 'Transposition', 'Product', 'Cesar', 'Substitution']
+    encryptionTypes = ['RSA', 'Playfair', 'Transposition', 'Product', 'Caesar', 'Substitution']
     texts = []
     
     while True:
