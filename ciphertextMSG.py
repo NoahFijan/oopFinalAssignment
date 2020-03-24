@@ -6,12 +6,6 @@ class CiphertextMSG(Message):
             plaintext = self.rsaDecrypt(text)
             super().__init__(plaintext)
 
-        if encryptionType == 'cesar':
-            super().__init__(self.cesarEncrypt(text))
-
-        if encryptionType == 'playfair':
-            super().__init__(self.playfairEcrypt(text))
-
 
     def readPrivKey(self):
         '''
@@ -36,6 +30,7 @@ class CiphertextMSG(Message):
         return ''.join(dec)
 
     def playfairDecrypt(self, text):
+        # SEE PLAYFAIR ENCRYPT FOR DOCUMENTATION, repeated process for decryption with some minor changes
         text = text.replace(" ", "")
         text = text.upper()
         listEncrPair = []
@@ -65,14 +60,14 @@ class CiphertextMSG(Message):
             pos1 = -1
             pos2 = -1
             for row in range(len(key)):
-                if (pair[0] in key[row]) & (pair[1] in key[row]):  # FOR SURE R0W CHECK
+                if (pair[0] in key[row]) & (pair[1] in key[row]):
                     rCheck = True
                     for item in key[row]:
                         if pair[0] == item:
-                            pos1 = key[row].index(item) - 1
+                            pos1 = key[row].index(item) - 1  # choose the position shifted to the left (opposite to encryption)
                             if pos1 < 0: pos1 += 5
                         if pair[1] == item:
-                            pos2 = key[row].index(item) - 1
+                            pos2 = key[row].index(item) - 1  # choose the position shifted to the left (opposite to encryption)
                             if pos2 < 0: pos2 += 5
                     listPair.append((key[row][pos1], key[row][pos2]))
                     listEncrPair.pop(0)
@@ -81,10 +76,10 @@ class CiphertextMSG(Message):
                 pos2 = -1
                 for row in range(len(key)):
                     if pair[0] == key[row][z]:
-                        pos1 = row - 1
+                        pos1 = row - 1  # choose the position shifted upwards (opposite to encryption)
                         if pos1 < 0: pos1 += 5
                     if pair[1] == key[row][z]:
-                        pos2 = row - 1
+                        pos2 = row - 1  # choose the position shifted upwards (opposite to encryption)
                         if pos2 < 0: pos2 += 5
                     if (pos1 > -1) & (pos2 > -1):
                         cCheck = True
@@ -92,6 +87,7 @@ class CiphertextMSG(Message):
                         listEncrPair.pop(0)
                         break
             if not (rCheck + cCheck) & (len(listEncrPair) > 0):
+            # same process from encryption, since method applies the same in reverse
                 x1, y1 = -1, -1
                 x2, y2 = -1, -1
                 for y in range(len(key)):
@@ -113,6 +109,7 @@ class CiphertextMSG(Message):
         return decryptString
 
     def transpositionDecrypt(self, text):
+        # SEE TRANSPOSITIONENCRYPTION FOR DOCUMENTATION, exact same process for decryption.
         newString = text.split(" ")
         decryptStringList = []
         decryptString = ""
