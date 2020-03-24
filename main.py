@@ -13,8 +13,8 @@ if __name__ == '__main__':
         if text == 'stop':
             break
         encType = random.choice(encryptionTypes)
-        encMessage = PlaintextMsg(text, encType)
-        decMessage = ciphertextMSG(encMessage.message, encType)
+        encMessage = PlaintextMSG(text, encType)
+        decMessage = CiphertextMSG(encMessage.message, encType)
         texts.append((encMessage, decMessage, encType))
     
     while len(texts) != 0:

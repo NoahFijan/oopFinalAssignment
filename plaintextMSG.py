@@ -223,8 +223,7 @@ class PlaintextMSG(Message):
             encryptString += char
         # FOR LOOP cycles through each char in the encrypted string list, appending it to the encrypted string
         return encryptString
-    
-    
+
     def substitutionEncrypt(text):
         substitution_mapping = list(range(26))
         random.shuffle(substitution_mapping)
@@ -238,8 +237,7 @@ class PlaintextMSG(Message):
                 encrypted_msg += c
 
         return encrypted_msg, substitution_mapping
-    
-    
+
     def caesarEncrypt(self, text):
         caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         encrypted_msg = ""
