@@ -137,6 +137,22 @@ class CiphertextMSG(Message):
 
         return decrypted_msg
 
+    
+    def caesarDecrypt(text, key):
+        caesar_mapping = key
+        decrypted_msg = ""
+        base_val = ord('a')
+
+        for c in text:
+            if (c >= 'a' and c <= 'z'):
+                x = caesar_mapping.index(ord(c) - base_val)
+                y = x + base_val
+                decrypted_msg += chr(y)
+            else:
+                decrypted_msg += c
+
+        return decrypted_msg
+
 if __name__ == '__main__':
     a = CiphertextMSG([1050, 1283, 807, 807, 2905, 3576, 1683, 2905, 50, 807, 174, 3096], 'RSA')
     print(a.message)
