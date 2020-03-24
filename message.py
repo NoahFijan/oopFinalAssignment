@@ -1,6 +1,6 @@
 class Message:
     def __init__(self, text):
-        self._message = text
+        self.message = text
 
     @property
     def message(self):
