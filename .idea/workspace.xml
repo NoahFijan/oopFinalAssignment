@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b66d82d-0526-4e6d-af0e-ac1093f545a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ciphertextMSG.py" beforeDir="false" afterPath="$PROJECT_DIR$/ciphertextMSG.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plaintextMSG.py" beforeDir="false" afterPath="$PROJECT_DIR$/plaintextMSG.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585081453431</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="eh">
+      <created>1585081977802</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585081977802</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,6 +191,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="this is a message" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="eh" />
+    <option name="LAST_COMMIT_MESSAGE" value="eh" />
   </component>
 </project>

@@ -1,32 +1,32 @@
 from message import Message
 
+
 class CiphertextMSG(Message):
     def __init__(self, text, encryptionType):
         if encryptionType == 'RSA':
             plaintext = self.rsaDecrypt(text)
             super().__init__(plaintext)
 
-
     def readPrivKey(self):
-        '''
+        """
         Reads private key components from a the private key file generated in the
         PlaintextMSG.py file and returns them
-        '''
+        """
         f = open('priv.txt', 'r')
         n = f.readline()
         d = f.readline()
         f.close()
         return int(n), int(d)
 
-
     def rsaDecrypt(self, text):
-        '''
+        """
         Takes the encrypted message as input and and returns the decrypted message
-        '''
-        n, d = self.readPrivKey() #get private key
+        """
+        n, d = self.readPrivKey()  # get private key
 
         dec = [chr((char ** d) % n) for char in text]
 
+        print("Decrypted Message:", ''.join(dec))
         return ''.join(dec)
 
     def playfairDecrypt(self, text):
@@ -64,10 +64,12 @@ class CiphertextMSG(Message):
                     rCheck = True
                     for item in key[row]:
                         if pair[0] == item:
-                            pos1 = key[row].index(item) - 1  # choose the position shifted to the left (opposite to encryption)
+                            pos1 = key[row].index(
+                                item) - 1  # choose the position shifted to the left (opposite to encryption)
                             if pos1 < 0: pos1 += 5
                         if pair[1] == item:
-                            pos2 = key[row].index(item) - 1  # choose the position shifted to the left (opposite to encryption)
+                            pos2 = key[row].index(
+                                item) - 1  # choose the position shifted to the left (opposite to encryption)
                             if pos2 < 0: pos2 += 5
                     listPair.append((key[row][pos1], key[row][pos2]))
                     listEncrPair.pop(0)
@@ -87,7 +89,7 @@ class CiphertextMSG(Message):
                         listEncrPair.pop(0)
                         break
             if not (rCheck + cCheck) & (len(listEncrPair) > 0):
-            # same process from encryption, since method applies the same in reverse
+                # same process from encryption, since method applies the same in reverse
                 x1, y1 = -1, -1
                 x2, y2 = -1, -1
                 for y in range(len(key)):
@@ -106,6 +108,7 @@ class CiphertextMSG(Message):
                 if char != 'X':
                     decryptString += char
 
+        print("Decrypted Message:", decryptString)
         return decryptString
 
     def transpositionDecrypt(self, text):
@@ -120,40 +123,43 @@ class CiphertextMSG(Message):
 
         for char in decryptStringList:
             decryptString += char
+
+        print("Decrypted Message:", decryptString)
         return decryptString
-    
-    def substitutionDecrypt(text, key):
+
+    def substitutionDecrypt(self, text, key):
         substitution_mapping = key
         decrypted_msg = ""
         base_val = ord('a')
 
         for c in text:
-            if (c >= 'a' and c <= 'z'):
+            if 'a' <= c <= 'z':
                 x = substitution_mapping.index(ord(c) - base_val)
                 y = x + base_val
                 decrypted_msg += chr(y)
             else:
                 decrypted_msg += c
 
+        print("Decrypted Message:", decrypted_msg)
         return decrypted_msg
 
-    
-    def caesarDecrypt(text, key):
+    def caesarDecrypt(self, text, key):
         caesar_mapping = key
         decrypted_msg = ""
         base_val = ord('a')
 
         for c in text:
-            if (c >= 'a' and c <= 'z'):
+            if 'a' <= c <= 'z':
                 x = caesar_mapping.index(ord(c) - base_val)
                 y = x + base_val
                 decrypted_msg += chr(y)
             else:
                 decrypted_msg += c
 
+        print("Decrypted Message:", decrypted_msg)
         return decrypted_msg
+
 
 if __name__ == '__main__':
     a = CiphertextMSG([1050, 1283, 807, 807, 2905, 3576, 1683, 2905, 50, 807, 174, 3096], 'RSA')
     print(a.message)
-
