@@ -238,6 +238,20 @@ class PlaintextMSG(Message):
                 encrypted_msg += c
 
         return encrypted_msg, substitution_mapping
+    
+    
+    def caesarCipher(text):
+        caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        encrypted_msg = ""
+        base_val = ord('a')
+
+        for c in text:
+            if (c >= 'a' and c <= 'z'):
+                encrypted_msg += chr(caesar_mapping[ord(c) - base_val] + base_val)
+            else:
+                encrypted_msg += c
+
+        return encrypted_msg, caesar_mapping
 
 
 if __name__ == '__main__':
