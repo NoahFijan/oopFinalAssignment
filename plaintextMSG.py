@@ -110,8 +110,6 @@ class PlaintextMSG(Message):
 
         c = [(ord(char) ** e) % n for char in text]  # for each char in message encrypt it
 
-        print("RSA Method Chosen")
-        print("Encrypted Message:", c)
         return c
 
     def productEncrypt(self, text):
@@ -231,8 +229,6 @@ class PlaintextMSG(Message):
                     encryptedString += char
         # cycle through each char in the list of pairs, if the character is not "X" append the character to the string
 
-        print("Playfair Method Chosen")
-        print("Encrypted Message:", encryptedString)
         return encryptedString
         # return the string
 
@@ -250,8 +246,6 @@ class PlaintextMSG(Message):
             encryptString += char
         # FOR LOOP cycles through each char in the encrypted string list, appending it to the encrypted string
 
-        print("Transposition Method Chosen")
-        print("Encrypted Message:", encryptString)
         return encryptString
 
     def substitutionEncrypt(self, text):
@@ -266,8 +260,6 @@ class PlaintextMSG(Message):
             else:
                 encrypted_msg += c
 
-        print("Substitution Method Chosen")
-        print("Encrypted Message:", encrypted_msg)
         return encrypted_msg, substitution_mapping
 
     def caesarEncrypt(self, text):
@@ -281,8 +273,6 @@ class PlaintextMSG(Message):
             else:
                 encrypted_msg += c
 
-        print("Caesar Method Chosen")
-        print("Encrypted Message:", encrypted_msg)
         return encrypted_msg, caesar_mapping
 
 

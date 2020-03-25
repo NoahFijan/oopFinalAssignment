@@ -26,7 +26,6 @@ class CiphertextMSG(Message):
 
         dec = [chr((char ** d) % n) for char in text]
 
-        print("Decrypted Message:", ''.join(dec))
         return ''.join(dec)
 
     def playfairDecrypt(self, text):
@@ -108,7 +107,6 @@ class CiphertextMSG(Message):
                 if char != 'X':
                     decryptString += char
 
-        print("Decrypted Message:", decryptString)
         return decryptString
 
     def transpositionDecrypt(self, text):
@@ -124,7 +122,6 @@ class CiphertextMSG(Message):
         for char in decryptStringList:
             decryptString += char
 
-        print("Decrypted Message:", decryptString)
         return decryptString
 
     def substitutionDecrypt(self, text, key):
@@ -140,7 +137,6 @@ class CiphertextMSG(Message):
             else:
                 decrypted_msg += c
 
-        print("Decrypted Message:", decrypted_msg)
         return decrypted_msg
 
     def caesarDecrypt(self, text, key):
@@ -156,7 +152,6 @@ class CiphertextMSG(Message):
             else:
                 decrypted_msg += c
 
-        print("Decrypted Message:", decrypted_msg)
         return decrypted_msg
 
 
