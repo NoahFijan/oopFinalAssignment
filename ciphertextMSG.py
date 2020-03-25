@@ -6,6 +6,9 @@ class CiphertextMSG(Message):
         if encryptionType == 'RSA':
             plaintext = self.rsaDecrypt(text)
             super().__init__(plaintext)
+        if encryptionType == 'Product':
+            plaintext = self.productDecrypt(text)
+            super().__init__(plaintext)
 
     def readPrivKey(self):
         """
@@ -109,6 +112,14 @@ class CiphertextMSG(Message):
 
         return decryptString
 
+    def productDecrypt(self, text):
+        """
+        applies RSA decryption then transposition decryption to decrypt string
+        """
+        pt1 = self.rsaDecrypt(text)
+        pt2 = self.transpositionDecrypt(pt1)
+        return pt2
+
     def transpositionDecrypt(self, text):
         # SEE TRANSPOSITIONENCRYPTION FOR DOCUMENTATION, exact same process for decryption.
         newString = text.split(" ")
@@ -156,5 +167,11 @@ class CiphertextMSG(Message):
 
 
 if __name__ == '__main__':
-    a = CiphertextMSG([1050, 1283, 807, 807, 2905, 3576, 1683, 2905, 50, 807, 174, 3096], 'RSA')
+    a = CiphertextMSG([4700, 3061, 4493, 4493, 7622, 5915, 4178, 7622, 2202, 4493, 5869, 7533], 'RSA')
     print(a.message)
+<<<<<<< HEAD
+=======
+    pt = CiphertextMSG([5869, 4493, 2202, 7622, 2253, 7622, 4493, 4493, 3061, 2742, 5915], 'Product')
+    print(pt.message)
+
+>>>>>>> 18a32b95b61a0705e80aecc094ee0bbf7fba19e5
