@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b66d82d-0526-4e6d-af0e-ac1093f545a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ciphertextMSG.py" beforeDir="false" afterPath="$PROJECT_DIR$/ciphertextMSG.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/message.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plaintextMSG.py" beforeDir="false" afterPath="$PROJECT_DIR$/plaintextMSG.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/priv.txt" beforeDir="false" afterPath="$PROJECT_DIR$/priv.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pub.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pub.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -6,10 +6,22 @@ class CiphertextMSG(Message):
         if encryptionType == 'RSA':
             plaintext = self.rsaDecrypt(text)
             super().__init__(plaintext)
-        if encryptionType == 'Product':
+        elif encryptionType == 'Playfair':
+            plaintext = self.playfairDecrypt(text)
+            super().__init__(plaintext)
+        elif encryptionType == 'Transposition':
+            plaintext = self.transpositionDecrypt(text)
+            super().__init__(plaintext)
+        elif encryptionType == 'Product':
             plaintext = self.productDecrypt(text)
             super().__init__(plaintext)
-
+        elif encryptionType == 'Caesar':
+            plaintext = self.caesarDecrypt(text)
+            super().__init__(plaintext)
+        elif encryptionType == 'Substitution':
+            plaintext = self.substitutionDecrypt(text)
+            super().__init__(plaintext)
+            
     def readPrivKey(self):
         """
         Reads private key components from a the private key file generated in the
@@ -121,7 +133,7 @@ class CiphertextMSG(Message):
         return pt2
 
     def transpositionDecrypt(self, text):
-        # SEE TRANSPOSITIONENCRYPTION FOR DOCUMENTATION, exact same process for decryption.
+        # SEE TRANSPOSITION ENCRYPTION FOR DOCUMENTATION, exact same process for decryption.
         newString = text.split(" ")
         decryptStringList = []
         decryptString = ""
@@ -135,7 +147,7 @@ class CiphertextMSG(Message):
 
         return decryptString
 
-    def substitutionDecrypt(self, text, key):
+    def substitutionDecrypt(self, text):
         substitution_mapping = key
         decrypted_msg = ""
         base_val = ord('a')
@@ -150,7 +162,7 @@ class CiphertextMSG(Message):
 
         return decrypted_msg
 
-    def caesarDecrypt(self, text, key):
+    def caesarDecrypt(self, text):
         caesar_mapping = key
         decrypted_msg = ""
         base_val = ord('a')
@@ -169,9 +181,5 @@ class CiphertextMSG(Message):
 if __name__ == '__main__':
     a = CiphertextMSG([4700, 3061, 4493, 4493, 7622, 5915, 4178, 7622, 2202, 4493, 5869, 7533], 'RSA')
     print(a.message)
-<<<<<<< HEAD
-=======
     pt = CiphertextMSG([5869, 4493, 2202, 7622, 2253, 7622, 4493, 4493, 3061, 2742, 5915], 'Product')
     print(pt.message)
-
->>>>>>> 18a32b95b61a0705e80aecc094ee0bbf7fba19e5

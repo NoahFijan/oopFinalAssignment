@@ -13,23 +13,23 @@ class PlaintextMSG(Message):
             ciphertext = self.rsaEncrypt(text)
             super().__init__(ciphertext)
 
-        if encryptionType == 'Playfair':
+        elif encryptionType == 'Playfair':
             ciphertext = self.playfairEncrypt(text)
             super().__init__(ciphertext)
 
-        if encryptionType == 'Transposition':
+        elif encryptionType == 'Transposition':
             ciphertext = self.transpositionEncrypt(text)
             super().__init__(ciphertext)
 
-        if encryptionType == 'Product':
+        elif encryptionType == 'Product':
             ciphertext = self.productEncrypt(text)
             super().__init__(ciphertext)
 
-        if encryptionType == 'Caeser':
+        elif encryptionType == 'Caesar':
             ciphertext = self.caesarEncrypt(text)
             super().__init__(ciphertext)
 
-        if encryptionType == 'Substitution':
+        elif encryptionType == 'Substitution':
             ciphertext = self.substitutionEncrypt(text)
             super().__init__(ciphertext)
 
@@ -117,7 +117,9 @@ class PlaintextMSG(Message):
 
         c = [(ord(char) ** e) % n for char in text]  # for each char in message encrypt it
 
+        print(1)
         return c
+
 
     def productEncrypt(self, text):
         """
@@ -125,7 +127,8 @@ class PlaintextMSG(Message):
         """
         c1 = self.transpositionEncrypt(text) 
         c2 = self.rsaEncrypt(c1)
-        
+
+        print(2)
         return c2
 
     def playfairEncrypt(self, text):
@@ -242,6 +245,7 @@ class PlaintextMSG(Message):
                     encryptedString += char
         # cycle through each char in the list of pairs, if the character is not "X" append the character to the string
 
+        print(3)
         return encryptedString
         # return the string
 
@@ -259,6 +263,7 @@ class PlaintextMSG(Message):
             encryptString += char
         # FOR LOOP cycles through each char in the encrypted string list, appending it to the encrypted string
 
+        print(4)
         return encryptString
 
     def substitutionEncrypt(self, text):
@@ -273,7 +278,8 @@ class PlaintextMSG(Message):
             else:
                 encrypted_msg += c
 
-        return encrypted_msg, substitution_mapping
+        print(5)
+        return encrypted_msg
 
     def caesarEncrypt(self, text):
         caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -286,7 +292,8 @@ class PlaintextMSG(Message):
             else:
                 encrypted_msg += c
 
-        return encrypted_msg, caesar_mapping
+        print(6)
+        return encrypted_msg
 
 
 if __name__ == '__main__':
