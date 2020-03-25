@@ -74,10 +74,17 @@ class PlaintextMSG(Message):
         """
         reads the public key so that we can encrypt the message
         """
-        f = open('pub.txt', 'r')
-        n = f.readline()
-        e = f.readline()
-        f.close()
+        try:
+            f = open('pub.txt', 'r')
+            n = f.readline()
+            e = f.readline()
+            f.close()
+        except FileNotFoundError:
+            self.generateKeys()
+            f = open('pub.txt', 'r')
+            n = f.readline()
+            e = f.readline()
+            f.close()
         return int(n), int(e)
 
     def generateKeys(self):
@@ -113,7 +120,13 @@ class PlaintextMSG(Message):
         return c
 
     def productEncrypt(self, text):
-        pass
+        """
+        applies transposition cipher to the input text and then layers RSA on top of the encrypted string
+        """
+        c1 = self.transpositionEncrypt(text) 
+        c2 = self.rsaEncrypt(c1)
+        
+        return c2
 
     def playfairEncrypt(self, text):
         """
@@ -278,3 +291,5 @@ class PlaintextMSG(Message):
 if __name__ == '__main__':
     ct = PlaintextMSG('Hello World!', 'RSA')
     print(ct.message)
+    ct1 = PlaintextMSG('helloworld', 'Product')
+    print(ct1.message)
