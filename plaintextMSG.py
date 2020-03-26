@@ -1,3 +1,7 @@
+#Noah Fijan, 100749828
+#Noah Morin, 100740090
+#Blake Whiting, 100743587 
+
 from message import Message
 import random
 import math
@@ -314,3 +318,4 @@ if __name__ == '__main__':
     print(ct.message)
     ct1 = PlaintextMSG('helloworld', 'Product')
     print(ct1.message)
+

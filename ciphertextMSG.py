@@ -1,3 +1,7 @@
+#Noah Fijan, 100749828
+#Noah Morin, 100740090
+#Blake Whiting, 100743587 
+
 from message import Message
 import json
 
