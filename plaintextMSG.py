@@ -266,32 +266,49 @@ class PlaintextMSG(Message):
         print(4)
         return encryptString
 
-    def substitutionEncrypt(self, text):
+    # Substitution Encryption Cipher
+    def substitutionCipher(text):
+        # Setting the Key by randomly generating the key into a list of 26 positions
         substitution_mapping = list(range(26))
         random.shuffle(substitution_mapping)
         encrypted_msg = ""
         base_val = ord('a')
 
+        # Writing the substitution Key to a file
+        with open('substitutionKey.txt', 'w') as substitutionFile:
+            json.dump(substitution_mapping, substitutionFile)
+        substitutionFile.close()
+
+        # Loop to encrypt each character in the string
         for c in text:
-            if 'a' <= c <= 'z':
+            # If the character is between 'a' and 'z'
+            if (c >= 'a' and c <= 'z'):
                 encrypted_msg += chr(substitution_mapping[ord(c) - base_val] + base_val)
+            # If the character is not in the range of 'a' to 'z', then leave that character alone
             else:
                 encrypted_msg += c
 
+        # Return the encrypted message
         print(5)
         return encrypted_msg
 
-    def caesarEncrypt(self, text):
+    def caesarCipher(text):
+        # Defining the key, message as string and the base value as the Ascii of 'a'
         caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         encrypted_msg = ""
         base_val = ord('a')
 
+        # Loop to encrypt text
         for c in text:
-            if 'a' <= c <= 'z':
+            # If the character is between 'a' and 'z'
+            if (c >= 'a' and c <= 'z'):
+                # Encrypted Character is the position in the key of the Ascii value of the character
                 encrypted_msg += chr(caesar_mapping[ord(c) - base_val] + base_val)
+            # If the character is not in the range of 'a' to 'z', then leave that character alone
             else:
                 encrypted_msg += c
 
+        # Return the encrypted message
         print(6)
         return encrypted_msg
 
