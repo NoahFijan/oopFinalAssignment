@@ -120,7 +120,7 @@ class CiphertextMSG(Message):
         decryptString = ""
         for tpl in listPair:
             for char in tpl:
-                if char != 'X':
+                if char != 'Z':
                     decryptString += char
 
         return decryptString
@@ -149,7 +149,7 @@ class CiphertextMSG(Message):
         return decryptString
 
     # Substitution Decryption
-    def substitutionDecrypt(text):
+    def substitutionDecrypt(self, text):
         decrypted_msg = ""
         base_val = ord('a')
 
@@ -161,7 +161,7 @@ class CiphertextMSG(Message):
         # Loop to decrypt each character in the string
         for c in text:
             # If the character is between 'a' and 'z'
-            if (c >= 'a' and c <= 'z'):
+            if 'a' <= c <= 'z':
                 x = substitution_mapping.index(ord(c) - base_val)
                 y = x + base_val
                 decrypted_msg += chr(y)
@@ -173,7 +173,7 @@ class CiphertextMSG(Message):
         return decrypted_msg
 
     # Caesar Decrypt
-    def caesarDecrypt(text):
+    def caesarDecrypt(self, text):
         # Defining the key, message as string and the base value as the Ascii of 'a'
         caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         decrypted_msg = ""
@@ -182,7 +182,7 @@ class CiphertextMSG(Message):
         # Loop to decrypt text
         for c in text:
             # If the character is between 'a' and 'z'
-            if (c >= 'a' and c <= 'z'):
+            if 'a' <= c <= 'z':
                 x = caesar_mapping.index(ord(c) - base_val)
                 y = x + base_val
                 decrypted_msg += chr(y)

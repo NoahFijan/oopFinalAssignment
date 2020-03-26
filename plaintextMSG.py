@@ -118,7 +118,6 @@ class PlaintextMSG(Message):
 
         c = [(ord(char) ** e) % n for char in text]  # for each char in message encrypt it
 
-        print(1)
         return c
 
 
@@ -246,7 +245,6 @@ class PlaintextMSG(Message):
                     encryptedString += char
         # cycle through each char in the list of pairs, if the character is not "X" append the character to the string
 
-        print(3)
         return encryptedString
         # return the string
 
@@ -264,11 +262,10 @@ class PlaintextMSG(Message):
             encryptString += char
         # FOR LOOP cycles through each char in the encrypted string list, appending it to the encrypted string
 
-        print(4)
         return encryptString
 
     # Substitution Encryption Cipher
-    def substitutionCipher(text):
+    def substitutionEncrypt(self, text):
         # Setting the Key by randomly generating the key into a list of 26 positions
         substitution_mapping = list(range(26))
         random.shuffle(substitution_mapping)
@@ -283,17 +280,16 @@ class PlaintextMSG(Message):
         # Loop to encrypt each character in the string
         for c in text:
             # If the character is between 'a' and 'z'
-            if (c >= 'a' and c <= 'z'):
+            if 'a' <= c <= 'z':
                 encrypted_msg += chr(substitution_mapping[ord(c) - base_val] + base_val)
             # If the character is not in the range of 'a' to 'z', then leave that character alone
             else:
                 encrypted_msg += c
 
         # Return the encrypted message
-        print(5)
         return encrypted_msg
 
-    def caesarCipher(text):
+    def caesarEncrypt(self, text):
         # Defining the key, message as string and the base value as the Ascii of 'a'
         caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         encrypted_msg = ""
@@ -302,7 +298,7 @@ class PlaintextMSG(Message):
         # Loop to encrypt text
         for c in text:
             # If the character is between 'a' and 'z'
-            if (c >= 'a' and c <= 'z'):
+            if 'a' <= c <= 'z':
                 # Encrypted Character is the position in the key of the Ascii value of the character
                 encrypted_msg += chr(caesar_mapping[ord(c) - base_val] + base_val)
             # If the character is not in the range of 'a' to 'z', then leave that character alone
@@ -310,7 +306,6 @@ class PlaintextMSG(Message):
                 encrypted_msg += c
 
         # Return the encrypted message
-        print(6)
         return encrypted_msg
 
 
