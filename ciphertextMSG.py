@@ -1,4 +1,5 @@
 from message import Message
+import json
 
 
 class CiphertextMSG(Message):
@@ -147,34 +148,49 @@ class CiphertextMSG(Message):
 
         return decryptString
 
-    def substitutionDecrypt(self, text):
-        substitution_mapping = key
+    # Substitution Decryption
+    def substitutionDecrypt(text):
         decrypted_msg = ""
         base_val = ord('a')
 
+        # Reading the substitution key from the file and assigning it to a variable, substitution_mapping
+        with open('substitutionKey.txt') as substitutionFile:
+            substitution_mapping = json.load(substitutionFile)
+        substitutionFile.close()
+
+        # Loop to decrypt each character in the string
         for c in text:
-            if 'a' <= c <= 'z':
+            # If the character is between 'a' and 'z'
+            if (c >= 'a' and c <= 'z'):
                 x = substitution_mapping.index(ord(c) - base_val)
                 y = x + base_val
                 decrypted_msg += chr(y)
+            # If the character is not in the range of 'a' to 'z', then leave that character alone
             else:
                 decrypted_msg += c
 
+        # Return the encrypted message
         return decrypted_msg
 
-    def caesarDecrypt(self, text):
-        caesar_mapping = key
+    # Caesar Decrypt
+    def caesarDecrypt(text):
+        # Defining the key, message as string and the base value as the Ascii of 'a'
+        caesar_mapping = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         decrypted_msg = ""
         base_val = ord('a')
 
+        # Loop to decrypt text
         for c in text:
-            if 'a' <= c <= 'z':
+            # If the character is between 'a' and 'z'
+            if (c >= 'a' and c <= 'z'):
                 x = caesar_mapping.index(ord(c) - base_val)
                 y = x + base_val
                 decrypted_msg += chr(y)
+            # If the character is not in the range of 'a' to 'z', then leave that character alone
             else:
                 decrypted_msg += c
 
+        # Return the encrypted message
         return decrypted_msg
 
 
