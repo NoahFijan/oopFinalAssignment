@@ -217,7 +217,8 @@ class PlaintextMSG(Message):
                     # characters to the encrypted list, pop the pair from the list
                     # COLUMN METHOD works by shifting the column elements down by 1. e.g P,B encrypted is I,K
             # IF row check and collumn check are false, and the length of the list is greater than 0
-            if not (rCheck + cCheck) & (len(listPair) > 0):
+            if (not(rCheck and cCheck)) & (len(listPair) > 0):
+                print(rCheck, cCheck)
                 x1, y1 = -1, -1
                 x2, y2 = -1, -1
                 # initialize x,y coords 1,2 to -1
@@ -233,7 +234,8 @@ class PlaintextMSG(Message):
                             y2 = y
                         # if the second char in the pair is equal to the element being looked at, note it's x,y
                 listEncrPair.append((key[y1][x2], key[y2][x1]))
-                listPair.pop(0)
+                if len(listPair) > 0:
+                    listPair.pop(0)
                 #  append the encrypted characters to the encrypted list, pop the pair from the list
                 # RECTANGLE METHOD works by creating a rectangle with each char making up a corner, the encrypted
                 # characters are the opposing corners, e.g R,Q encrypted is J,N

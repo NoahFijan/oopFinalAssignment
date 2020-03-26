@@ -103,7 +103,7 @@ class CiphertextMSG(Message):
                         listPair.append((key[pos1][z], key[pos2][z]))
                         listEncrPair.pop(0)
                         break
-            if not (rCheck + cCheck) & (len(listEncrPair) > 0):
+            if (not(rCheck and cCheck)) & (len(listEncrPair) > 0):
                 # same process from encryption, since method applies the same in reverse
                 x1, y1 = -1, -1
                 x2, y2 = -1, -1
