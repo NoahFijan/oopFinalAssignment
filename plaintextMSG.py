@@ -2,6 +2,7 @@ from message import Message
 import random
 import math
 import os
+import json
 
 
 class PlaintextMSG(Message):
