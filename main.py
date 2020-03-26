@@ -19,7 +19,7 @@ if __name__ == '__main__':
     
     while len(texts) != 0:
         m = texts.pop(0)
-        print(f'message {m[1].message} was encrypted using {m[2]} and the encrypted message was {m[0].message}')
+        print(f'message "{m[1].message}" was encrypted using {m[2]} and the encrypted message was "{m[0].message}"')
 
 
 

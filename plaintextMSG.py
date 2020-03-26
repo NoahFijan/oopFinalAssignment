@@ -319,3 +319,4 @@ if __name__ == '__main__':
     print(ct.message)
     ct1 = PlaintextMSG('helloworld', 'Product')
     print(ct1.message)
+
