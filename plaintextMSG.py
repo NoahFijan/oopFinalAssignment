@@ -80,7 +80,7 @@ class PlaintextMSG(Message):
             n = f.readline()
             e = f.readline()
             f.close()
-        except FileNotFoundError:
+        except FileNotFoundError: # if Product cipher is selected before rsa and no key files are in current directory, this exception is caught and will generate the keys
             self.generateKeys()
             f = open('pub.txt', 'r')
             n = f.readline()
