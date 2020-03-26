@@ -128,7 +128,6 @@ class PlaintextMSG(Message):
         c1 = self.transpositionEncrypt(text) 
         c2 = self.rsaEncrypt(c1)
 
-        print(2)
         return c2
 
     def playfairEncrypt(self, text):
@@ -245,6 +244,7 @@ class PlaintextMSG(Message):
                     encryptedString += char
         # cycle through each char in the list of pairs, if the character is not "X" append the character to the string
 
+        print(2)
         return encryptedString
         # return the string
 

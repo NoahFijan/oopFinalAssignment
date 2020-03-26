@@ -116,13 +116,14 @@ class CiphertextMSG(Message):
                             x2 = x
                             y2 = y
                 listPair.append((key[y1][x2], key[y2][x1]))
-                listEncrPair.pop(0)
+                if len(listEncrPair) > 0:
+                    listEncrPair.pop(0)
         decryptString = ""
         for tpl in listPair:
             for char in tpl:
                 if char != 'Z':
                     decryptString += char
-
+        decryptString = decryptString.lower()
         return decryptString
 
     def productDecrypt(self, text):
