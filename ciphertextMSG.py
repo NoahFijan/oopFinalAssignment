@@ -147,7 +147,7 @@ class CiphertextMSG(Message):
         for char in decryptStringList:
             decryptString += char
 
-        return decryptString
+        return decryptString.strip()
 
     # Substitution Decryption
     def substitutionDecrypt(self, text):

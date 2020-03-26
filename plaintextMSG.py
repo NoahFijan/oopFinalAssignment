@@ -243,8 +243,6 @@ class PlaintextMSG(Message):
                 if char != 'X':
                     encryptedString += char
         # cycle through each char in the list of pairs, if the character is not "X" append the character to the string
-
-        print(2)
         return encryptedString
         # return the string
 
@@ -262,7 +260,7 @@ class PlaintextMSG(Message):
             encryptString += char
         # FOR LOOP cycles through each char in the encrypted string list, appending it to the encrypted string
 
-        return encryptString
+        return encryptString.strip()
 
     # Substitution Encryption Cipher
     def substitutionEncrypt(self, text):
