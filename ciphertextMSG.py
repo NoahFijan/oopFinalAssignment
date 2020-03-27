@@ -7,7 +7,15 @@ import json
 
 
 class CiphertextMSG(Message):
+    """
+    Ciphertext message takes in a string to decrypt, and an encryption type, then applies 
+    that decryption method and sets the _message attribute in the base class equal to the 
+    encrypted message
+    """
     def __init__(self, text, encryptionType):
+        """
+        takes in some text and an encyption type and applies the decryption method to the string
+        """
         if encryptionType == 'RSA':
             plaintext = self.rsaDecrypt(text)
             super().__init__(plaintext)

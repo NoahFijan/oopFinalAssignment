@@ -10,7 +10,15 @@ import json
 
 
 class PlaintextMSG(Message):
+    """
+    plaintext message takes in a string to encrypt, and an encryption type, then applies 
+    that encryption method and sets the _message attribute in the base class equal to the 
+    encrypted message
+    """
     def __init__(self, text, encryptionType):
+        """
+        takes as input some text and an encryption type and applies the encryption to the string
+        """
         if encryptionType == 'RSA':
             if not os.path.exists('./pub.txt') or not os.path.exists('./priv.txt'):
                 self.generateKeys()
