@@ -222,7 +222,6 @@ class PlaintextMSG(Message):
                     # COLUMN METHOD works by shifting the column elements down by 1. e.g P,B encrypted is I,K
             # IF row check and collumn check are false, and the length of the list is greater than 0
             if (not(rCheck and cCheck)) & (len(listPair) > 0):
-                print(rCheck, cCheck)
                 x1, y1 = -1, -1
                 x2, y2 = -1, -1
                 # initialize x,y coords 1,2 to -1
