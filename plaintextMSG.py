@@ -1,6 +1,6 @@
-#Noah Fijan, 100749828
-#Noah Morin, 100740090
-#Blake Whiting, 100743587 
+# Noah Fijan, 100749828
+# Noah Morin, 100740090
+# Blake Whiting, 100743587
 
 from message import Message
 import random
@@ -84,7 +84,7 @@ class PlaintextMSG(Message):
             n = f.readline()
             e = f.readline()
             f.close()
-        except FileNotFoundError: # if Product cipher is selected before rsa and no key files are in current directory, this exception is caught and will generate the keys
+        except FileNotFoundError:  # if Product cipher is selected before rsa and no key files are in current directory, this exception is caught and will generate the keys
             self.generateKeys()
             f = open('pub.txt', 'r')
             n = f.readline()
@@ -124,19 +124,18 @@ class PlaintextMSG(Message):
 
         return c
 
-
     def productEncrypt(self, text):
         """
         applies transposition cipher to the input text and then layers RSA on top of the encrypted string
         """
-        c1 = self.transpositionEncrypt(text) 
+        c1 = self.transpositionEncrypt(text)
         c2 = self.rsaEncrypt(c1)
 
         return c2
 
     def playfairEncrypt(self, text):
         """
-        encrypts the plaintext message using the playfair cipher method
+        PlayfairEncrypt method accepts a string and decrypts it using the playfair method. Returns an encrypted string.
         """
         text = text.replace(" ", "")
         text = text.upper()
@@ -221,7 +220,7 @@ class PlaintextMSG(Message):
                     # characters to the encrypted list, pop the pair from the list
                     # COLUMN METHOD works by shifting the column elements down by 1. e.g P,B encrypted is I,K
             # IF row check and collumn check are false, and the length of the list is greater than 0
-            if (not(rCheck and cCheck)) & (len(listPair) > 0):
+            if (not (rCheck and cCheck)) & (len(listPair) > 0):
                 x1, y1 = -1, -1
                 x2, y2 = -1, -1
                 # initialize x,y coords 1,2 to -1
@@ -252,6 +251,9 @@ class PlaintextMSG(Message):
         # return the string
 
     def transpositionEncrypt(self, text):
+        """
+        Transposition method accepts a string and decrypts it using the transposition method. Returns an encrypted string.
+        """
         newString = text.split(" ")  # split the sentence into a list of words
         encryptStringList = []
         encryptString = ""
@@ -317,4 +319,3 @@ if __name__ == '__main__':
     print(ct.message)
     ct1 = PlaintextMSG('helloworld', 'Product')
     print(ct1.message)
-

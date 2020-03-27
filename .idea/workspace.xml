@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b66d82d-0526-4e6d-af0e-ac1093f545a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ciphertextMSG.py" beforeDir="false" afterPath="$PROJECT_DIR$/ciphertextMSG.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plaintextMSG.py" beforeDir="false" afterPath="$PROJECT_DIR$/plaintextMSG.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/substitutionKey.txt" beforeDir="false" afterPath="$PROJECT_DIR$/substitutionKey.txt" afterDir="false" />
     </list>

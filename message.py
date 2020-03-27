@@ -9,4 +9,3 @@ class Message:
     @message.setter
     def message(self, text):
         self._message = text
-    
